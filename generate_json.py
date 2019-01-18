@@ -1,4 +1,5 @@
 import json
+from mkdict import get_all_zhu, get_all_yue
 
 char_to_strokes = {}
 
@@ -26,7 +27,19 @@ for char,strokes_list in char_to_strokes.items():
       strokes_to_char[strokes] = []
     strokes_to_char[strokes].append(char)
 
+char_to_zhuyin = {}
+
+for char,_ in char_to_strokes.items():
+  char_to_zhuyin[char] = get_all_zhu(char)
+
+char_to_jyutping = {}
+
+for char,_ in char_to_strokes.items():
+  char_to_jyutping[char] = get_all_yue(char)
+
 outf = open('index_dist.js', 'wt')
 print('var char_to_strokes = ' + json.dumps(char_to_strokes) + ';\n\n', file=outf)
 print('var strokes_to_char = ' + json.dumps(strokes_to_char) + ';\n\n', file=outf)
+print('var char_to_zhuyin = ' + json.dumps(char_to_zhuyin) + ';\n\n', file=outf)
+print('var char_to_jyutping = ' + json.dumps(char_to_jyutping) + ';\n\n', file=outf)
 print(open('index.js').read(), file=outf)

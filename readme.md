@@ -4,6 +4,8 @@ Search for chinese characters by combining constituent characters and strokes
 
 The name comes because it merges characters (字, zì)
 
+Pinyin (Mandarin) and Jyutping (Cantonese) pronunciations are also displayed after the character
+
 # Use
 
 https://zmerge.github.io/

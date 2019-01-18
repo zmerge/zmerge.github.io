@@ -85,8 +85,21 @@ default_help_lines = [
   'Example: enter 目青 to get 睛'
   'You can also use strokes h=一(横) s=丨(竖) n=丶(捺) p=丿(撇) z=乙(折)'
   'Example: enter ps青 to get 倩'
+  'Pinyin (Mandarin) and Jyutping (Cantonese) pronunciations are also displayed after the character'
   'For more examples see <a href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'
 ]
+
+get_zhuyin = (char) ->
+  output = char_to_zhuyin[char]
+  if output?
+    return output.join(' ')
+  return ''
+
+get_jyutping = (char) ->
+  output = char_to_jyutping[char]
+  if output?
+    return output.join(' ')
+  return ''
 
 text_changed = ->
   newtext = document.querySelector('#textinput').value
@@ -100,7 +113,7 @@ text_changed = ->
     return
   output = []
   for x in merge_chars(newtext)
-    output.push x + ' ' + convert_terminal_char_to_strokes(x).join(' ')
+    output.push x + ' ' + get_zhuyin(x) + ' ' + get_jyutping(x) + ' ' + convert_terminal_char_to_strokes(x).join(' ')
   display_lines output
 
 main = ->
