@@ -26,7 +26,8 @@
       '水': ['nnn', 'nnh'],
       '冰': ['nh'],
       '衣': ['nhpspn', 'nzspn'],
-      '示': ['nhpsn', 'nzsn']
+      '示': ['nhpsn', 'nzsn'],
+      '雨': ['hnzsnnpn', 'hnzsnnnn']
     };
     if (special[char] != null) {
       for (i$ = 0, len$ = (ref$ = special[char]).length; i$ < len$; ++i$) {

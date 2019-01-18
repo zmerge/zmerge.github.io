@@ -20,6 +20,7 @@ convert_terminal_char_to_strokes = (char) ->
     '冰': ['nh'] # 冫
     '衣': ['nhpspn', 'nzspn'] # 衤
     '示': ['nhpsn', 'nzsn'] # 礻
+    '雨': ['hnzsnnpn', 'hnzsnnnn']
   }
   if special[char]?
     for x in special[char]
