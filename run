@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./compile
+node index_dist.js

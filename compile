@@ -1,0 +1,4 @@
+#!/bin/bash
+
+lsc -c index.ls
+python3 generate_json.py
