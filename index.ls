@@ -78,18 +78,26 @@ display_lines = (lines) ->
   display = $('#display')
   display.html('')
   for x in lines
-    display.append($('<div>').text(x))
+    display.append($('<div>').html(x))
 
-
+default_help_lines = [
+  'Merges characters and strokes.'
+  'Example: enter 目青 to get 睛'
+  'You can also use strokes h=一(横) s=丨(竖) n=丶(捺) p=丿(撇) z=乙(折)'
+  'Example: enter ps青 to get 倩'
+  'For more examples see <a href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'
+]
 
 text_changed = ->
   newtext = document.querySelector('#textinput').value
+  newtext = newtext.split(' ').join('')
   invalid_charaters = return_invalid_characters(newtext)
-  console.log('invalid characters are ' + invalid_charaters)
-  if invalid_charaters.length > 0
-    display_lines ['invalid character ' + invalid_charaters]
+  if newtext.length == 0
+    display_lines default_help_lines
     return
-  console.log('new text is ' + newtext)
+  if invalid_charaters.length > 0
+    display_lines ['invalid character ' + invalid_charaters].concat(default_help_lines)
+    return
   output = []
   for x in merge_chars(newtext)
     output.push x + ' ' + convert_terminal_char_to_strokes(x).join(' ')
@@ -102,5 +110,6 @@ main = ->
     textinput = document.querySelector('#textinput')
     textinput.onchange = text_changed
     textinput.onkeyup = text_changed
+    display_lines default_help_lines
 
 main()
