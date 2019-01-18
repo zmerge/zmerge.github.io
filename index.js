@@ -113,7 +113,7 @@
     }
     return results$;
   };
-  default_help_lines = ['Merges characters and strokes.', 'Example: enter 目青 to get 睛', 'You can also use strokes h=一(横) s=丨(竖) n=丶(捺) p=丿(撇) z=乙(折)', 'Example: enter ps青 to get 倩', 'Pinyin (Mandarin) and Jyutping (Cantonese) pronunciations are also displayed after the character', 'For more examples see <a href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'];
+  default_help_lines = ['Merges characters and strokes.', 'Example: enter 目青 to get 睛', 'You can also use strokes h=一(横) s=丨(竖) n=丶(捺) p=丿(撇) z=乙(折)', 'Example: enter ps青 to get 倩', 'Pinyin (Mandarin) and Jyutping (Cantonese) pronunciations are also displayed after the character', 'For more examples see <a target="_blank" href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'];
   get_zhuyin = function(char){
     var output;
     output = char_to_zhuyin[char];
@@ -146,7 +146,7 @@
     output = [];
     for (i$ = 0, len$ = (ref$ = merge_chars(newtext)).length; i$ < len$; ++i$) {
       x = ref$[i$];
-      output.push(x + ' ' + get_zhuyin(x) + ' ' + get_jyutping(x) + ' ' + convert_terminal_char_to_strokes(x).join(' '));
+      output.push(x + ' ' + get_zhuyin(x) + ' ' + get_jyutping(x) + ' ' + convert_terminal_char_to_strokes(x).join(' ') + ' <a target="_blank" href="https://en.wiktionary.org/wiki/' + x + '">wiki</a>');
     }
     return display_lines(output);
   };

@@ -87,7 +87,7 @@ default_help_lines = [
   'You can also use strokes h=一(横) s=丨(竖) n=丶(捺) p=丿(撇) z=乙(折)'
   'Example: enter ps青 to get 倩'
   'Pinyin (Mandarin) and Jyutping (Cantonese) pronunciations are also displayed after the character'
-  'For more examples see <a href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'
+  'For more examples see <a target="_blank" href="https://github.com/zmerge/zmerge.github.io">https://github.com/zmerge/zmerge.github.io</a>'
 ]
 
 get_zhuyin = (char) ->
@@ -114,7 +114,7 @@ text_changed = ->
     return
   output = []
   for x in merge_chars(newtext)
-    output.push x + ' ' + get_zhuyin(x) + ' ' + get_jyutping(x) + ' ' + convert_terminal_char_to_strokes(x).join(' ')
+    output.push x + ' ' + get_zhuyin(x) + ' ' + get_jyutping(x) + ' ' + convert_terminal_char_to_strokes(x).join(' ') + ' <a target="_blank" href="https://en.wiktionary.org/wiki/' + x + '">wiki</a>'
   display_lines output
 
 main = ->
