@@ -111,5 +111,6 @@ main = ->
     textinput.onchange = text_changed
     textinput.onkeyup = text_changed
     display_lines default_help_lines
+    textinput.focus()
 
 main()

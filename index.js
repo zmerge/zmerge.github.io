@@ -139,7 +139,8 @@
       textinput = document.querySelector('#textinput');
       textinput.onchange = text_changed;
       textinput.onkeyup = text_changed;
-      return display_lines(default_help_lines);
+      display_lines(default_help_lines);
+      return textinput.focus();
     });
   };
   main();
