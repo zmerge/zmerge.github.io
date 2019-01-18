@@ -102,9 +102,14 @@ get_jyutping = (char) ->
     return output.join(' ')
   return ''
 
+prev_text_value = ''
+
 text_changed = ->
   newtext = document.querySelector('#textinput').value
   newtext = newtext.split(' ').join('')
+  if newtext == prev_text_value
+    return
+  prev_text_value = newtext
   invalid_charaters = return_invalid_characters(newtext)
   if newtext.length == 0
     display_lines default_help_lines
@@ -122,7 +127,7 @@ main = ->
   document.addEventListener 'DOMContentLoaded', ->
     #alert('dom content loaded')
     textinput = document.querySelector('#textinput')
-    textinput.onchange = text_changed
+    #textinput.onchange = text_changed
     textinput.onkeyup = text_changed
     display_lines default_help_lines
     textinput.focus()
